@@ -18,7 +18,7 @@ load('./data/rawData/seaLevel.RData')
 # We therefore simply format the object for final export of the driver layer.
 
 # Change column name
-colnames(seaLevel)[1] <- 'seaLevel'
+colnames(seaLevel)[1] <- 'SeaLevel'
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,5 +32,5 @@ save(seaLevel, file = './Data/Driver/SeaLevel.RData')
 #                                 VISUALIZE DATA
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 png('./Figures/SeaLevel.png', width = 1280, height = 1000, res = 200, pointsize = 6)
-plot(seaLevel[, 'seaLevel'], border = 'transparent')
+plot(seaLevel[, 'SeaLevel'], border = 'transparent')
 dev.off()

@@ -2,6 +2,7 @@
 #                                     LIBRARIES
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 library(raster)
+library(sf)
 library(magrittr)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,7 +73,30 @@ values(seaLevel) <- values(seaLevel)
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#                                    FORMAT DATA
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Modify projection
+# We use the Lambert projection as a default, which allows us to work in meters
+# rather than in degrees
+prj <- st_crs(32198)$proj4string
+seaLevel <- projectRaster(seaLevel, crs = prj)
+
+# We also work with polygons rather than rasters, so we need to transform raster
+# cells to polygons. Data could be left as rasters, but we elected to work with
+# a hexagonal grid and so have decided to convert everything in polygons.
+# Transform raster to polygon
+seaLevel <- rasterToPolygons(seaLevel)
+
+# Transform to sf object
+seaLevel <- st_as_sf(seaLevel)
+
+# Select only features with values > 0
+id0 <- seaLevel$slr > 0
+seaLevel <- seaLevel[id0, ]
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #                                  EXPORT DATA
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Export object as .RData
-save(seaLevel, file = './data/rawData/seaLevelStL.RData')
+save(seaLevel, file = './data/rawData/seaLevel.RData')
