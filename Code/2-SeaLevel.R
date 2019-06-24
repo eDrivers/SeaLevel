@@ -24,8 +24,11 @@ colnames(seaLevel)[1] <- 'SeaLevel'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #                                  EXPORT DATA
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Change name for uniformity
+SeaLevel <- seaLevel
+
 # Export object as .RData
-save(seaLevel, file = './Data/Driver/SeaLevel.RData')
+save(SeaLevel, file = './Data/Driver/SeaLevel.RData')
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
