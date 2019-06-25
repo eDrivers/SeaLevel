@@ -1,0 +1,26 @@
+title: "Sea level rise"
+subtitle: ""
+description: "Net positive sea level rise between 1992 and 2012"
+
+rawData:
+  source: "Halpern, B. S., Frazier, M., Potapenko, J., Casey, K. S., Koenig, K., Longo, C., et al. (2015). Cumulative human impacts: Raw stressor data (2008 and 2013). Knowledge Network for Biocomplexity. doi:10.5063/f1s180fs."
+  contact: "Benjamin Halpern"
+
+dataDescription:
+  units: "mm"
+  spatialResolution: "Modeled 0.25 degree"
+  temporalResolution: "10 days"
+  years: "1992-2012"
+  projection:
+    proj4string: "+proj=lcc +lat_1=60 +lat_2=46 +lat_0=44 +lon_0=-68.5 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+    egsp: "32198"
+  extent:
+    xmin: "-664526.8"
+    ymin: "121621.4"
+    xmax: "1475205"
+    ymax: "1052117"
+
+availability:
+  rawData: "yes"
+  code: "yes"
+  driver: "yes"
